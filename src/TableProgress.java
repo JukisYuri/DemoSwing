@@ -1,4 +1,4 @@
-package EX26;
+package EX26.src;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +41,15 @@ public class TableProgress {
             model.addRow(new Object[]{stt++, course.getTenMH(), course.getDiem()});
         }
     }
+    private int findSubject(Student stu, String subName) {
+        int index = -1;
+        for (int i = 0; i < stu.getCourses().size(); i++) {
+            if (stu.getCourses().get(i).getTenMH().equals(subName)) {
+                return index = i;
+            }
+        }
+        return index;
+    }
     public void addCourse(){
         String mssv = fieldMSSV.getText();
         Student student = students.get(mssv);
@@ -63,16 +72,18 @@ public class TableProgress {
         Student student = students.get(mssv);
         if(student != null){
             String tenMH = (String) comboBoxTenMH.getSelectedItem();
+            String nameSub = tenMH.split("\t")[1].trim();
             String diem = fieldDiem.getText();
-            if(!tenMH.isEmpty() && !diem.isEmpty()){
-                student.addScore(tenMH, Double.parseDouble(diem));
+            int index = findSubject(student, nameSub);
+            if (index == -1) {
+                student.addScore(nameSub, Double.parseDouble(diem));
                 updateTable(student);
                 JOptionPane.showMessageDialog(null, "Đã thay đổi điểm số");
-            } else {
-                JOptionPane.showMessageDialog(null, "Tên môn học sai hoặc điểm không tồn tại");
+            }else {
+                student.getCourses().get(index).setDiem(Double.parseDouble(diem));
+                updateTable(student);
+                JOptionPane.showMessageDialog(null, "Đã thay đổi điểm số");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Sinh viên không tồn tại");
         }
     }
 }

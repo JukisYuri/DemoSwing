@@ -1,4 +1,4 @@
-package EX26;
+package EX26.src;
 
 import javax.swing.*;
 

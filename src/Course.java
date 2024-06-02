@@ -1,4 +1,4 @@
-package EX26;
+package EX26.src;
 
 public class Course {
     private String tenMH;
@@ -14,5 +14,9 @@ public class Course {
     }
     public double getDiem() {
         return diem;
+    }
+
+    public void setDiem(double diem) {
+        this.diem = diem;
     }
 }

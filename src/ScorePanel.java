@@ -1,4 +1,4 @@
-package EX26;
+package EX26.src;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -29,7 +29,8 @@ public class ScorePanel extends JPanel {
         JLabel labelTenSV = new JLabel("Họ Và Tên", JLabel.RIGHT);
         fieldTenSV = new JTextField();
         JLabel labelTenMH = new JLabel("Tên Môn Học", JLabel.RIGHT);
-        comboBoxTenMH = new JComboBox<>(new Vector<>()); // Fix this
+        String[]subjects = {"1111 \t Lập Trình Nâng Cao", "2222 \t Lý Thuyết Đồ Thị", "3333 \t Lập Trình Cơ Bản", "9999 \t Thiết Kế Hướng Đối Tượng"};
+        comboBoxTenMH = new JComboBox(subjects);
         JLabel labelDiem = new JLabel("Điểm", JLabel.RIGHT);
         fieldDiem = new JTextField();
 
